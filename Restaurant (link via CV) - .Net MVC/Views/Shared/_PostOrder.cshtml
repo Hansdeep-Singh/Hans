@@ -1,0 +1,145 @@
+﻿@using NepaleseRestaurant.Models
+
+
+
+@model PageOrderViewModel
+@using (Html.BeginForm("FinalPost", "Home", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+
+
+    @Html.HiddenFor(model => model.Odr.RecievedDateTime, new { @id = "datetimepost" })
+
+    <script>
+        function myFunction() {
+            var currentdate = new Date();
+            var datetime = "Date: " + currentdate.getDate() + "/"
+                + (currentdate.getMonth() + 1) + "/"
+                + currentdate.getFullYear() + " Time "
+                + currentdate.getHours() + ":"
+                + currentdate.getMinutes() + ":"
+                + currentdate.getSeconds();
+            document.getElementById("datetimepost").value = datetime;
+        };
+    </script>
+
+
+
+    List<SelectListItem> Suburb = new List<SelectListItem>();
+    Suburb.Add(new SelectListItem { Text = "Boronia", Value = "Boronia" });
+    Suburb.Add(new SelectListItem { Text = "Basin", Value = "Basin" });
+    Suburb.Add(new SelectListItem { Text = "Ferntree Gully", Value = "Ferntree Gully" });
+    Suburb.Add(new SelectListItem { Text = "Mountain Gate", Value = "Mountain Gate" });
+    Suburb.Add(new SelectListItem { Text = "Upper Ferntree Gully", Value = "Upper Ferntree Gully" });
+    Suburb.Add(new SelectListItem { Text = "Upway", Value = "Upway" });
+    Suburb.Add(new SelectListItem { Text = "Wantirna South", Value = "Wantirna South" });
+    Suburb.Add(new SelectListItem { Text = "Knoxfield", Value = "Knoxfield" });
+    Suburb.Add(new SelectListItem { Text = "Scoresby", Value = "Scoresby" });
+    Suburb.Add(new SelectListItem { Text = "Rowville", Value = "Rowville" });
+
+
+    <div class="row rowlove mb-1">
+        <div class="col-md-6">
+            @Html.TextBoxFor(model => model.Cust.Name, new { @placeholder = "Enter Your Name", @class = "form-control swing", @id = "name", @type = "text", @name = "name" })
+            <label for="name">Name</label>
+            <div class="validation-message">@Html.ValidationMessageFor(model => model.Cust.Name)</div>
+        </div>
+        <div class="col-md-6">
+            @Html.TextBoxFor(model => model.Cust.Phone, new { @placeholder = "Enter Your Phone Number", @class = "form-control swing", @id = "phone", @type = "text", @name = "email" })
+            <label for="phone">Phone</label>
+            <div class="validation-message">@Html.ValidationMessageFor(model => model.Cust.Phone)</div>
+        </div>
+    </div>
+
+
+    @*<div class="row mb-1">
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.Cust.Name, new { @placeholder = "Enter Your Name", @class = "form-control", @id = "name", @type = "text", @name = "name" })
+                <div class="validation-message">@Html.ValidationMessageFor(model => model.Cust.Name)</div>
+            </div>
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.Cust.Phone, new { @placeholder = "Enter Your Phone Number", @class = "form-control", @id = "email", @type = "text", @name = "email" })
+                <div class="validation-message">@Html.ValidationMessageFor(model => model.Cust.Phone)</div>
+            </div>
+        </div>*@
+
+    <div class="row mb-1">
+        <div class="col-md-12 ">
+            <span class="bg-primary pl-1 pr-1 text-center d-block rounded font-weight-normal text-white">Minimum($40) for delievery plus $5 Extra.</span>
+            <div class="border mt-1 h-50 pb-1 rounded bg-danger border-dark"> <span class="pl-1 pr-1 text-center text-light mt-1 d-block rounded shake-little shake-constant">Orders delievered in surrounding suburbs only.</span></div>
+        </div>
+    </div>
+
+    <div class="row rowlove mb-1">
+
+        <div class="col-md-12 text-dark p-2">
+            Pick-up @Html.RadioButtonFor(model => model.Odr.PickUpDeliever, "Pick-up", new { @checked = "checked", @id = "pickup", @class = "bg-primary pickup" })
+            Delievery  @Html.RadioButtonFor(model => model.Odr.PickUpDeliever, "Delivery", new { @id = "deliever", @class = "bg-primary deliever" })
+        </div>
+
+    </div>
+
+    <div class="row mb-1">
+        <div class="col-md-6">
+            <div class="validation-message">@Html.ValidationMessageFor(model => model.Cust.AddressLineOne)</div>
+        </div>
+        <div class="col-md-6">
+            <div class="validation-message">@Html.ValidationMessageFor(model => model.Cust.Suburb)</div>
+        </div>
+    </div>
+
+    <div class="row rowlove mb-1">
+        <div class="col-md-6">
+            @Html.TextBoxFor(model => model.Cust.AddressLineOne, new { @placeholder = "Address First Line", @disabled = "disabled", @class = "form-control swing address", @id = "autocomplete", @type = "text", @onFocus = "geolocate()", @name = "name" })
+            <label for="autocomplete">Address</label>
+        </div>
+        <div class="col-md-6">
+            @Html.DropDownListFor(model => model.Cust.Suburb, Suburb, "-- Select Suburb --", new { @placeholder = "Suburb", @disabled = "disabled", @class = "form-control suburb", @id = "suburb", @name = "suburb" })
+            <label for="suburb">Suburb</label>
+        </div>
+
+    </div>
+
+
+
+
+    <div class="row mb-1">
+        <div class="col-md-12">
+            @Html.TextAreaFor(model => model.Odr.Instructions, new { @placeholder = "Special preferences eg, (make it mild)", @class = "form-control", @id = "name", @type = "text", @name = "name" })
+            <div class="validation-message">@Html.ValidationMessageFor(model => model.Odr.Instructions)</div>
+        </div>
+    </div>
+
+    <div class="row mt-3 ">
+        <div class="col-md-12  grad-blue text-light rounded">
+            <h2 class="text-center">Order Details</h2>
+            <p id="id"></p>
+            <div class="row bg-dark order-details-font">
+                <div class="col-sm-7 font-weight-bold ">MENU ITEM NAME</div>
+                <div class="col-sm-2 font-weight-bold ">QUANTITY</div>
+                <div class="col-sm-3 font-weight-bold">PRICE($)</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-7 font-weight-bold order-details-font flex-wrap"><p id="nameofite"></p></div>
+                <div class="col-sm-2"><p id="quantit"></p></div>
+                <div class="col-sm-3"><p id="totalpric"></p></div>
+            </div>
+
+
+            <div class="row grad-1 shadow rounded">
+                <div class="col-sm-5"><h4>Grand Total ($)</h4></div>
+                <div class="col-sm-5"><p id="added" class="added col-ylo-txt"></p></div>
+                <div class="col-sm-2"><p id="grandtota" class="grand_total"></p></div>
+            </div>
+
+
+            <div class="row grad-1 shadow p-2">
+                <button type="submit" onclick="myFunction()" class="btn btn-success">
+                    Send Order
+                </button>
+            </div>
+        </div>
+    </div>
+
+}
+

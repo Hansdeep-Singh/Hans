@@ -1,0 +1,324 @@
+﻿@model NepaleseRestaurant.Models.PageMenuCategoryViewModel
+@using (Html.BeginForm("AddItemPost", "Secure", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Mivm.MenuCategoryId)
+
+    List<SelectListItem> HalfFull = new List<SelectListItem>();
+
+    HalfFull.Add(new SelectListItem
+    {
+        Text = "Full",
+        Value = "Full"
+    });
+    HalfFull.Add(new SelectListItem
+    {
+        Text = "Half",
+        Value = "Half"
+    });
+
+    HalfFull.Add(new SelectListItem
+    {
+        Text = "One-Fourth",
+        Value = "One-Fourth"
+    });
+
+    List<SelectListItem> Servings = new List<SelectListItem>();
+
+    Servings.Add(new SelectListItem
+    {
+        Text = "Small",
+        Value = "Small"
+    });
+    Servings.Add(new SelectListItem
+    {
+        Text = "Large",
+        Value = "Large"
+    });
+
+    List<SelectListItem> Meat = new List<SelectListItem>();
+
+    Meat.Add(new SelectListItem
+    {
+        Text = "Chicken",
+        Value = "Chicken"
+    });
+    Meat.Add(new SelectListItem
+    {
+        Text = "Vegan",
+        Value = "Vegan"
+    });
+    Meat.Add(new SelectListItem
+    {
+        Text = "Beef",
+        Value = "Beef"
+    });
+    Meat.Add(new SelectListItem
+    {
+        Text = "Pork",
+        Value = "Pork"
+    });
+    Meat.Add(new SelectListItem
+    {
+        Text = "Lamb",
+        Value = "Lamb"
+    });
+
+    Meat.Add(new SelectListItem
+    {
+        Text = "Fish",
+        Value = "Fish"
+    });
+    Meat.Add(new SelectListItem
+    {
+        Text = "Goat",
+        Value = "Goat"
+    });
+    Meat.Add(new SelectListItem
+    {
+        Text = "Noodle",
+        Value = "Noodle"
+    });
+
+    Meat.Add(new SelectListItem
+    {
+        Text = "Vegetarian",
+        Value = "Vegetarian"
+    });
+    Meat.Add(new SelectListItem
+    {
+        Text = "Prawn",
+        Value = "Prawn"
+    });
+
+    List<SelectListItem> Spice = new List<SelectListItem>();
+
+    Spice.Add(new SelectListItem
+    {
+        Text = "Mild",
+        Value = "Mild"
+    });
+    Spice.Add(new SelectListItem
+    {
+        Text = "Medium",
+        Value = "Medium"
+    });
+
+    Spice.Add(new SelectListItem
+    {
+        Text = "Hot",
+        Value = "Hot"
+    });
+
+    Spice.Add(new SelectListItem
+    {
+        Text = "Very Hot",
+        Value = "Very Hot"
+    });
+
+
+    List<SelectListItem> Style = new List<SelectListItem>();
+
+    Style.Add(new SelectListItem
+    {
+        Text = "Chef Special",
+        Value = "Chef Special"
+    });
+    Style.Add(new SelectListItem
+    {
+        Text = "Nepalese Style, Hot",
+        Value = "Nepalese Style, Hot"
+    });
+
+    Style.Add(new SelectListItem
+    {
+        Text = "Nepalese Style, Med Hot",
+        Value = "Nepalese Style, Med Hot"
+    });
+
+    List<SelectListItem> Pieces = new List<SelectListItem>();
+
+    Pieces.Add(new SelectListItem
+    {
+        Text = "N/A",
+        Value = "N/A"
+    });
+
+    Pieces.Add(new SelectListItem
+    {
+        Text = "1",
+        Value = "1"
+    });
+    Pieces.Add(new SelectListItem
+    {
+        Text = "2",
+        Value = "2"
+    });
+
+    Pieces.Add(new SelectListItem
+    {
+        Text = "3",
+        Value = "3"
+    });
+
+    Pieces.Add(new SelectListItem
+    {
+        Text = "4",
+        Value = "4"
+    });
+
+    Pieces.Add(new SelectListItem
+    {
+        Text = "5",
+        Value = "5"
+    });
+
+    Pieces.Add(new SelectListItem
+    {
+        Text = "6",
+        Value = "6"
+    });
+
+    Pieces.Add(new SelectListItem
+    {
+        Text = "7",
+        Value = "7"
+    });
+
+    Pieces.Add(new SelectListItem
+    {
+        Text = "8",
+        Value = "8"
+    });
+
+    Pieces.Add(new SelectListItem
+    {
+        Text = "9",
+        Value = "9"
+    });
+
+    Pieces.Add(new SelectListItem
+    {
+        Text = "10",
+        Value = "10"
+    });
+
+
+
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <small class="font-weight-bold">Item Name</small>
+            @Html.TextBoxFor(model => model.Mivm.MenuItemName, new { @placeholder = "Item Name", @class = "form-control", @id = "itemname", @type = "text", @name = "itemname" })
+            <div class="validation-message">@Html.ValidationMessageFor(model => model.Mivm.MenuItemName)</div>
+        </div>
+        <div class="col-md-4">
+            <small class="font-weight-bold">Item Price</small>
+            @Html.TextBoxFor(model => model.Mivm.MenuItemPrice, "{0:n2}", new { @placeholder = "Item Price", @class = "form-control", @id = "itemprice", @type = "number", @name = "itemprice" })
+            <div class="validation-message">@Html.ValidationMessageFor(model => model.Mivm.MenuItemPrice)</div>
+
+        </div>
+        <div class="col-md-4">
+            <small class="font-weight-bold">Item order on Menu</small>
+            @Html.TextBoxFor(model => model.Mivm.MenuItemNumbering, "{0:n2}", new { @placeholder = "Order of Item", @class = "form-control", @id = "itemname", @type = "number", @name = "itemorder" })
+            <div class="validation-message">@Html.ValidationMessageFor(model => model.Mivm.MenuItemNumbering)</div>
+        </div>
+    </div>
+
+    <div class="row pt-2">
+        <div class="col-md-12">
+            <small class="font-weight-bold">Item description</small>
+            @Html.TextAreaFor(model => model.Mivm.MenuItemDescription, new { @placeholder = "Item Description", @class = "form-control", @id = "itemdescription", @name = "message", @rows = 3 })
+            <div class="validation-message">@Html.ValidationMessageFor(model => model.Mivm.MenuItemDescription)</div>
+        </div>
+    </div>
+
+
+
+
+    <div class="row pt-2">
+        <div class="col-md-4">
+            <small class="font-weight-bold">Select Portion.</small>
+            @Html.DropDownListFor(model => model.Mivm.MenuItemHalfFull, HalfFull, "-- Select Portion --", new { @placeholder = "HalfFull", @class = "form-control", @id = "halffull", @name = "halffull" })
+        </div>
+        <div class="col-md-4">
+            <small class="font-weight-bold">
+                Select servings size.
+            </small>
+            @Html.DropDownListFor(model => model.Mivm.MenuItemServings, Servings, "-- Select Serving Size --", new { @placeholder = "Servings", @class = "form-control", @id = "servings", @name = "servings" })
+        </div>
+        <div class="col-md-4">
+            <small class="font-weight-bold">
+                Select meat.
+            </small>
+            @Html.DropDownListFor(model => model.Mivm.MenuItemMeat, Meat, "-- Select Meat --", new { @placeholder = "Meat", @class = "form-control", @id = "meat", @name = "meat" })
+
+        </div>
+    </div>
+
+    <div class="row pt-2">
+        <div class="col-md-4">
+            <small class="font-weight-bold">
+                Select Spiciness.
+            </small>
+            @Html.DropDownListFor(model => model.Mivm.MenuItemSpiciness, Spice, "-- Select Spicy --", new { @placeholder = "Spicy", @class = "form-control", @id = "spicy", @name = "spicy" })
+        </div>
+        <div class="col-md-4">
+            <small class="font-weight-bold">
+                Select Style.
+            </small>
+            @Html.DropDownListFor(model => model.Mivm.MenuItemStyle, Style, "-- Select Style --", new { @placeholder = "Style", @class = "form-control", @id = "style", @name = "style" })
+        </div>
+        <div class="col-md-4">
+            <small class="font-weight-bold">
+                Select no of pieces
+            </small>
+            @Html.DropDownListFor(model => model.Mivm.MenuItemPieces, Pieces, "-- Select no of Pieces --", new { @placeholder = "Pieces", @class = "form-control", @id = "pieces", @name = "pieces" })
+
+        </div>
+    </div>
+
+    <div class="row pt-2">
+        <div class="col-md-12">
+            <small class="font-weight-bold">
+                Write any extra information if necessary.
+            </small>
+            @Html.TextBoxFor(model => model.Mivm.MenuItemMisc, new { @placeholder = "Miscellaneous", @class = "form-control", @id = "itemname", @type = "text", @name = "itemname" })
+        </div>
+    </div>
+
+    <div class="row pt-2">
+
+        <div class="col-md-8">
+
+            <div class="row"> <div class="col-md-12"> <h4>Upload Menu Item Photo</h4></div></div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <small class="font-weight-bold">
+                        Only file of format JPG is accepted with size range between 500 kb and 2.4 mb
+                    </small>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Mivm.File, new { @class = "file btn btn-lg btn-secondary w-100", @placeholder = "Upload Photos", @type = "file" })
+            @Html.ValidationMessageFor(model => model.Mivm.File, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+
+    <div class="row pt-2">
+        <div class="col-md-12">
+            <input class="btn btn-success" type="submit" name="Submit" value="Save">
+        </div>
+    </div>
+
+
+
+}

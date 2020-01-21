@@ -1,0 +1,39 @@
+﻿@using NepaleseRestaurant.Models
+@model PageOnlineOrdersViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSecure.cshtml";
+}
+<meta http-equiv="refresh" content="20" />
+@Scripts.Render("~/bundles/printthis")
+@Scripts.Render("~/bundles/signalr")
+@Scripts.Render("~/bundles/mycustom")
+
+<script src="~/signalr/js"></script>
+<script src="~/Scripts/customsignalr.js"></script>
+
+<div class="container"><div class="row"><div class="col-md-12 mt-5 "></div></div></div>
+<div class="container"><div class="row"><div class="col-md-12 mt-5 "></div></div></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 ">
+            <h2 class="border text-light text-center rounded grad-2">Online Orders</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 ">
+            <div id="neworder-message" class="grad-1"></div>
+        </div>
+    </div>
+
+
+    @*@Html.Partial("_DisplayNewOrders")*@
+    @*@Html.Partial("_DisplayNewOrdersPrint")*@
+
+    @*@Html.Partial("_DisplayNewOrdersPrintUpdated")*@
+    <div class="row m-auto w-75"><div class="col-12"> @Html.Partial("_DisplayNewOrdersPrintPrintable")</div></div>
+
+
+</div>
+
+

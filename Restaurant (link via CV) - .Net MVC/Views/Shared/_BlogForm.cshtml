@@ -1,0 +1,31 @@
+﻿@model NepaleseRestaurant.Models.BlogViewModel
+@using (Html.BeginForm("BlogPost", "Home", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-md-12">
+            @Html.TextBoxFor(model => model.BlogFrom, new { @placeholder = "Enter Your Name", @class = "form-control", @id = "name", @type = "text", @name = "name" })
+            <div class="validation-message">@Html.ValidationMessageFor(model => model.BlogFrom)</div>
+        </div>
+    </div>
+    <div class="row pt-1">
+        <div class="col-md-12">
+            @Html.TextAreaFor(model => model.BlogMessage, new { @placeholder = "Write your thoughts.", @class = "form-control", @id = "message", @name = "message", @rows = 3 })
+            <div class="validation-message">@Html.ValidationMessageFor(model => model.BlogMessage)</div>
+        </div>
+    </div>
+
+    <div class="row p-2">
+        <div class="col-md-12">
+            <input class="btn btn-success" type="submit" name="Submit" value="Post">
+        </div>
+    </div>
+
+
+}
+
+
+
+

@@ -1,0 +1,29 @@
+﻿@using NepaleseRestaurant.Models
+@model IList<BlogViewModel>
+
+@if (Model!= null)
+{
+    foreach (var blog in Model as List<BlogViewModel>)
+    {
+        <div class="row border m-3 shadow">
+            <div class="col-md-1">
+                <img class="img-fluid mt-2" src="~/Content/images/blog.jpg" />
+            </div>
+            <div class="col-md-11">
+                <div class="row">
+                    <div class="col-11"><header class="font-italic font-weight-bold">@blog.BlogFrom</header>on (@blog.BlogDate) Wrote:-</div>
+                    <div class="col-1">
+                        @using (Html.BeginForm("DeleteBlog", "Secure", new { id = blog.BlogId }))
+    {
+                    <input type="submit" class="del_btn" value="Delete" onclick="return confirm('Are you sure you want to delete blog from @blog.BlogFrom')" />
+}
+
+                    </div>
+                </div>
+                <div class="row mt-1 mb-2 mr-3">
+                    <div class="col-12 border"><p class="text-black-50 font-weight-light float-left ">@blog.BlogMessage</p></div>
+                </div>
+            </div>
+        </div>
+    }
+}

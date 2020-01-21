@@ -1,0 +1,49 @@
+﻿@Scripts.Render("~/bundles/magazine_js")
+@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_LayoutRest.cshtml";
+}
+<div id="canvas">
+    <div class="zoom-icon zoom-icon-in"></div>
+    <h1 class="text-center">Dine In Menu</h1>
+    <div class="magazine-viewport">
+        <div class="container">
+            <div class="magazine">
+                <!-- Next button -->
+                <div ignore="1" class="next-button"></div>
+                <!-- Previous button -->
+                <div ignore="1" class="previous-button"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thumbnails -->
+    @*<div class="thumbnails">
+        <div>
+            <ul>
+                <li class="i">
+                    <img src="~/Content/pages/1-thumb.jpg" width="76" height="100" class="page-1">
+                    <span>1</span>
+                </li>
+                <li class="d">
+                    <img src="~/Content/pages/2-thumb.jpg" width="76" height="100" class="page-2">
+                    <img src="~/Content/pages/3-thumb.jpg" width="76" height="100" class="page-3">
+                    <span>2-3</span>
+                </li>
+                <li class="d">
+                    <img src="~/Content/pages/4-thumb.jpg" width="76" height="100" class="page-4">
+                    <img src="~/Content/pages/5-thumb.jpg" width="76" height="100" class="page-5">
+                    <span>4-5</span>
+                </li>
+                <li class="d">
+                    <img src="~/Content/pages/6-thumb.jpg" width="76" height="100" class="page-6">
+                    <span>6</span>
+                </li>
+            </ul>
+        </div>
+    </div>*@
+    @Scripts.Render("~/bundles/flip_js")
+</div>
+
+
+

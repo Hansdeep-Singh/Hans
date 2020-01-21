@@ -1,0 +1,263 @@
+﻿
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/_LayoutRest.cshtml";
+}
+@Scripts.Render("~/bundles/jqueryval")
+
+
+
+@section stylelinks{
+    @Styles.Render("~/bundles/loading-style")
+}
+@section scriptlinks{
+    @Scripts.Render("~/bundles/interact")
+    @Scripts.Render("~/bundles/loading-script")
+}
+<link href="~/Content/inputlove.css" rel="stylesheet" />
+@Html.Raw(TempData["msg"])
+<div class="grad-gray bak-scr">
+    <div class="container-fluid">
+        <div class="row no-gutters">
+            <div class="col-md-12">
+
+                <div class="row d-none d-sm-none d-md-none d-lg-block">
+                    <div class="col-12"><h4 class="text-center grad-1 pb-1 text-light m-0">TAKE AWAY MENU ONLY - (Please note,delevery order may take between 45-60 mins during busy times, pickup takes 20-30 mins.)</h4></div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-9 d-block d-sm-block d-md-block d-lg-none"><p class="text-center grad-1 pb-1 text-light m-0">Delevery(45-60 mins) | Pickup (20-30 mins)</p></div>
+                    <div class="col-3 d-block d-sm-block d-md-block d-lg-none float-right"><div class="btn-view-oder rounded-circle grad-blue-circle det">Details</div></div>
+                </div>
+
+
+                <div class="dropdown-divider m-0">  </div>
+                <div class="w-100"><p class="text-center instruct">Choose quantity, then drag <span class="border grad-steel border-light pl-1 pr-1 rounded">click, hold and move</span> over order table, Thanks. </p></div>
+            </div>
+        </div>
+    </div>
+
+    @Html.Partial("_MenuItemsTabAnimation")
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12"> @Html.Partial("_MenuItemsTab")</div>
+        </div>
+
+
+
+        <div class="row p-1">
+
+            <div class="col-xl-10 " id="restrict">
+                <div class="menu-table-items-container d-flex">
+                    <div id="outer-dropzone" class="ordertable">
+                        <div class="d-block d-sm-block d-md-block d-lg-none float-right"><div class="btn-view-oder rounded-circle grad-blue-circle det">Details</div></div>
+                        <h1 class="text-light text-shadow">ORDER TABLE</h1>
+                        <div class="special rounded mb-4">
+                            <h1 class="fnt-tangerine font-fluid-4vw font-weight-bold display-3 text-light text-shadow">Dinner for  two <s>($52)</s><span class="col-brt-grn">$36</span></h1>
+                            <span class="child-inst col-ylo-txt d-block">Please ask for mild to medium spices if feeding younger children</span>
+                            <ul class="text-light font-resp">
+                                <li>2 PCS X ONION BHAJI</li>
+                                <li>2 PCS X TANDOORI CHICKEN</li>
+                                <li>1 X BUTTER CHICKEN</li>
+                                <li>1 X DAAL MAKHANI</li>
+                                <li>1 X BASMATI RICE, 1 X NAAN,</li>
+                                <li>2 PCS X PAPPADUMS WITH CHUTNEY</li>
+                            </ul>
+
+
+
+
+                            <button type="button" class="btn btn-success btn-sm mb-2" onclick="postorder()" data-toggle="modal" data-target="#dinner-for-two">
+                                Order <br /> Dinner For Two
+                            </button>
+
+
+                        </div>
+
+                        <div class="special rounded">
+                            <h1 class="fnt-tangerine font-fluid-4vw font-weight-bold display-3  text-light text-shadow">Family Pack <s>($72)</s> <span class="col-brt-grn">$60</span></h1>
+                            <p class="text-light font-fluid-1vw">
+                                <ul class="text-white font-resp">
+                                    <li>Veg Pakora, 4 pcs x Tandoori Chicken,</li>
+                                    <li>1 x Butter Chicken, 1 x Rogan Josh,</li>
+                                    <li>1 x Mixed Vegetable, 2 x Basmati Rice,</li>
+                                    <li> 2 x Naan, 1 x Raita, 4pcs x Pappadum and Chutney</li>
+                                </ul>
+                            </p>
+
+
+                            <button type="button" class="btn btn-success bt-sm mb-2" onclick="postorder()" data-toggle="modal" data-target="#family-pack">
+                                Order <br /> Family Pack
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-tab">
+                        @Html.Partial("_DisplayMenuItemsOrderPage")
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-2 grad-blue det-scr text-light img-thumbnail">
+
+                <div class="row">
+                    <div class="col-12"><h3 class="text-center">Order Details</h3></div>
+                </div>
+
+                <div class="row mb-1">
+                    <div class="col-6"> <button type="submit" class="btn-sm border-0 btn-danger" onClick="refreshPage()">Reset Order</button> </div>
+                    <div class="col-6 d-block d-sm-block d-md-block d-lg-none float-right"><div class="btn-view-oder grad-blue-circle rounded-circle bak">Back</div></div>
+                </div>
+
+                <p id="ids"></p>
+
+                <div class="row grad-1 order-details-font">
+                    <div class="col-sm-12 font-weight-bold text-center "><span class="text-light">Q</span> is Qty --- <span class="col-ylo-txt">($)</span> is price in dollars.</div>
+                </div>
+                <div class="dropdown-divider"></div>
+
+                <div class="row grad-1 order-details-font">
+                    <div class="col-7 font-weight-bold ">ITEM NAME</div>
+                    <div class="col-1 font-weight-bold text-light">Q</div>
+                    <div class="col-1 font-weight-bold col-ylo-txt">($)</div>
+                </div>
+
+                <div class="row">
+                    <div class="col-7 font-weight-bold order-details-font"><span class="text-truncate w-100" id="nameofitem"></span></div>
+                    <div class="col-1 text-light "><span id="quantity"></span></div>
+                    <div class="col-1 col-ylo-txt"><span id="totalprice"></span></div>
+                </div>
+
+
+                <div class="row grad-1 shadow">
+                    <div class="col-12"><h5 class="d-inline-block">Grand Total ($)</h5> <span id="grandtotal" class="grand_total col-ylo-txt d-inline-block"></span></div>
+                </div>
+
+                <div class="row grad-1 shadow p-2">
+
+                    <button type="button" class="btn btn-success" onclick="postorder()" data-toggle="modal" data-target="#order">
+                        Next
+                    </button>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="modal fade" id="order" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title bg-brown p-1 text-light rounded" id="exampleModalLabel">Finalise Order</h5>
+
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h6 class="d-block font-italic font-weight-bold">Order Payment on counter or upon delievery only.</h6>
+                                @Html.Partial("_PostOrder")
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-12">
+                <div class="modal fade" id="family-pack" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title bg-brown p-1 text-light rounded" id="exampleModalLabel">Family Pack</h5>
+
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h6 class="d-block font-italic font-weight-bold">Order Payment on counter or upon delievery only.</h6>
+                                @Html.Partial("_PostOrderFamilyPack")
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-12">
+                <div class="modal fade" id="dinner-for-two" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title bg-brown p-1 text-light rounded" id="exampleModalLabel">Dinner for two</h5>
+
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h6 class="d-block font-italic font-weight-bold">Order Payment on counter or upon delievery only.</h6>
+                                @Html.Partial("_PostOrderDinnerForTwo")
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="row">
+            <div class="col-12">
+                <div class="modal fade" id="lunch-pack" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title bg-info p-1 text-light rounded" id="exampleModalLabel">Lunch Pack</h5>
+
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h6 class="d-block font-italic font-weight-bold">Order Payment on counter or upon delievery only.</h6>
+                                @Html.Partial("_PostOrderLunchPack")
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+
+
+</div>
+
+<script src="~/Scripts/incrementdecrement.js"></script>
+
+

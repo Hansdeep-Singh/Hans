@@ -1,0 +1,72 @@
+﻿@model NepaleseRestaurant.Models.ImageCoordinates
+
+@{
+    ViewBag.Title = "Crop";
+    Layout = "~/Views/Shared/_LayoutSecure.cshtml";
+}
+@section stylelinks{
+
+    <link href="~/Content/jcrop_style/jquery.Jcrop.css" rel="stylesheet" />
+    <link href="~/Content/jcrop_style/jquery.Jcrop.min.css" rel="stylesheet" />
+}
+
+@section scriptlinks{
+    <script src="~/Content/jcrop/jquery.min.js"></script>
+    <script src="~/Content/jcrop/jquery.Jcrop.min.js"></script>
+    <script src="~/Content/jcrop/jquery.Jcrop.js"></script>
+    <script src="~/Content/jcrop/jquery.color.js"></script>
+}
+
+@section scripts
+    {
+    <script type="text/javascript">
+
+        $(function () {
+            $('#originalImage').Jcrop({
+                onChange: showPreview,
+                onSelect: showPreview,
+                aspectRatio: 16 / 9
+            });
+        });
+        function showPreview(c) {
+            $('#x1').val(c.x);
+            $('#y1').val(c.y);
+            $('#x2').val(c.x2);
+            $('#y2').val(c.y2);
+            $('#w').val(c.w);
+            $('#h').val(c.h);
+        }
+        document.getElementById("originalImage").style["position"] = "relative";
+        function ValidateSelected() {
+            if (document.getElementById("w").value == "" || document.getElementById("w").value == "0"
+                || document.getElementById("h").value == "" || document.getElementById("h").value == "0") {
+                alert("No area to crop was selected");
+                return false;
+            }
+        }
+
+    </script>
+}
+
+<div id="crop_photo" class="fl w_full">
+    <img src="@Model.PhotoString" id="originalImage" />
+</div>
+
+
+
+<div id="crop_photo_btn">
+    @using (Html.BeginForm("Crop", "Secure", FormMethod.Post))
+    {
+        @Html.HiddenFor(x => x.x1, new { @id = "x1" })
+        @Html.HiddenFor(x => x.x2, new { @id = "x2" })
+        @Html.HiddenFor(x => x.y1, new { @id = "y1" })
+        @Html.HiddenFor(x => x.y2, new { @id = "y2" })
+        @Html.HiddenFor(x => x.w, new { @id = "w" })
+        @Html.HiddenFor(x => x.h, new { @id = "h" })
+        @Html.HiddenFor(x => x.MenuItemId)
+
+        <input type="submit" name="action" value="Crop And Save" class="submitbutton_crop bdr_rad_thre outset" />
+    }
+</div>
+
+

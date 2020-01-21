@@ -1,0 +1,184 @@
+﻿@model NepaleseRestaurant.Models.ReservationViewModel
+@using (Html.BeginForm("Reservation", "Home", FormMethod.Post))
+{
+
+
+
+    @Html.HiddenFor(model => model.DateTimeRecieved, new { @id = "datereser" })
+
+<script>
+        function myReserve() {
+            var currentdate = new Date();
+            var datetime = "Date: " + currentdate.getDate() + "/"
+                + (currentdate.getMonth() + 1) + "/"
+                + currentdate.getFullYear() + " Time "
+                + currentdate.getHours() + ":"
+                + currentdate.getMinutes() + ":"
+                + currentdate.getSeconds();
+            document.getElementById("datereser").value = datetime;
+        };
+</script>
+
+
+
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+    <div class="row p-2">
+        <div class="col-md-6">
+            @Html.TextBoxFor(model => model.Name, new { @placeholder = "Enter Your Name", @class = "form-control", @id = "name", @type = "text", @name = "name" })
+            <div class="validation-message">@Html.ValidationMessageFor(model => model.Name)</div>
+        </div>
+        <div class="col-md-6">
+            @Html.TextBoxFor(model => model.Email, new { @placeholder = "Enter Your Email Address", @class = "form-control", @id = "email", @type = "text", @name = "email" })
+            <div class="validation-message">@Html.ValidationMessageFor(model => model.Email)</div>
+        </div>
+    </div>
+
+    <div class="row p-2">
+        <div class="col-md-6">
+            @Html.TextBoxFor(model => model.Subject, new { @placeholder = "Subject", @class = "form-control", @id = "subject", @type = "text", @name = "subject" })
+            <div class="validation-message">@Html.ValidationMessageFor(model => model.Subject)</div>
+        </div>
+        <div class="col-md-3">
+            @Html.TextBoxFor(model => model.Adults, new { @placeholder = "No of adults", @class = "form-control", @id = "adults", @type = "text", @name = "adults" })
+            <div class="validation-message">@Html.ValidationMessageFor(model => model.Adults)</div>
+        </div>
+        <div class="col-md-3">
+            @Html.TextBoxFor(model => model.Kids, new { @placeholder = "No of kids", @class = "form-control", @id = "kids", @type = "text", @name = "kids" })
+            <div class="validation-message">@Html.ValidationMessageFor(model => model.Kids)</div>
+        </div>
+    </div>
+
+    <div class="row p-2">
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Date, new { @placeholder = "Date", @class = "form-control", @id = "datepicker", @type = "text", @name = "date" })
+            <div class="validation-message">@Html.ValidationMessageFor(model => model.Date)</div>
+
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Time, new { @placeholder = "Time", @class = "form-control", @id = "timepicker", @type = "text", @name = "time" })
+            <div class="validation-message">@Html.ValidationMessageFor(model => model.Time)</div>
+
+        </div>
+
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Phone, new { @placeholder = "Phone", @class = "form-control", @id = "phone", @type = "number", @name = "phone" })
+            <div class="validation-message">@Html.ValidationMessageFor(model => model.Phone)</div>
+        </div>
+    </div>
+
+
+
+    <div class="row p-2">
+        <div class="col-md-12">
+            <div class="validation-message">@Html.ValidationMessageFor(model => model.Message)</div>
+            @Html.TextAreaFor(model => model.Message, new { @placeholder = "Message", @class = "form-control", @id = "message", @name = "message", @rows = 7 })
+        </div>
+
+    </div>
+
+    <div class="row p-2">
+        <div class="col-md-12">
+
+            <input class="btn btn-success" type="submit" onclick="myReserve()" name="Submit" value="Send Reservation">
+        </div>
+
+    </div>
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*@model NepaleseRestaurant.Models.Reservation
+    @using (Html.BeginForm("Reservation", "Home", FormMethod.Post))
+    {
+
+        @Html.ValidationSummary(true)
+        <div class="row p-2">
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.Name, new { @placeholder = "Enter Your Name", @class = "form-control", @id = "name", @type = "text", @name = "name" })
+            </div>
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.Email, new { @placeholder = "Enter Your Email Address", @class = "form-control", @id = "email", @type = "text", @name = "email" })
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">@Html.ValidationMessageFor(model => model.Name)</div>
+            <div class="col-md-6">@Html.ValidationMessageFor(model => model.Email)</div>
+        </div>
+
+        <div class="row p-2">
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.Subject, new { @placeholder = "Subject", @class = "form-control", @id = "subject", @type = "text", @name = "subject" })
+            </div>
+            <div class="col-md-3">
+                @Html.TextBoxFor(model => model.Date, new { @placeholder = "Date", @class = "form-control", @id = "date", @type = "text", @name = "date" })
+            </div>
+            <div class="col-md-3">
+
+                @Html.TextBoxFor(model => model.Time, new { @placeholder = "Time", @class = "form-control", @id = "time", @type = "text", @name = "time" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">@Html.ValidationMessageFor(model => model.Subject)</div>
+            <div class="col-md-3">@Html.ValidationMessageFor(model => model.Date)</div>
+            <div class="col-md-3">@Html.ValidationMessageFor(model => model.Time)</div>
+        </div>
+
+        <div class="row p-2">
+            <div class="col-md-12">
+                @Html.TextAreaFor(model => model.Message, new { @placeholder = "Message", @class = "form-control", @id = "message", @name = "message", @rows = 7 })
+
+            </div>
+
+        </div>
+
+        <div class="row p-2">
+            <div class="col-md-12">
+
+                <input class="btn btn-success" type="submit" name="Submit" value="Submit">
+            </div>
+
+        </div>
+
+
+
+    }*@

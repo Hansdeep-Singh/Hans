@@ -1,0 +1,105 @@
+﻿@using NepaleseRestaurant.Models
+@model PageOrderViewModel
+<div class="item-block">
+    @if (Model != null)
+    {
+        foreach (var item in Model.CI_L as List<CategoryItem>)
+        {
+
+            <div class="menu-items-box @item.Mcvm.MenuCategoryId">
+                <div class="category-block">
+
+
+                    <div class="row mb-1 no-gutters">
+                        <div class="col-md-3 grad-1 text-light text-center rounded text-truncate">@item.Mcvm.MenuCategoryName</div>
+                        <div class="col-md-6 text-truncate cl-desc-itm"><div class="ml-2">@item.Mcvm.MenuCategoryDescription</div></div>
+                        <div class="col-md-3">
+                            <div class="tog-up-btn">
+                                <div class="d-block slideup rounded text-truncate">Slide Up</div>
+                            </div>
+                            <div class="collapse-btn">
+                                <div class="d-block slideup rounded text-truncate">Collapse All</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    @foreach (var menuitem in item.Mivm_L as List<MenuItemViewModel>)
+                    {
+                        <div>
+                            <div id="yes-drop" class="drag-drop bg-marble noselect shadow d-inline-block">
+                                <div class="menu-item">
+                                    <div class="iden">@menuitem.MenuItemId</div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="item-size">@menuitem.MenuItemServings</div>
+                                            <img src="@menuitem.PhotoThumbString" class="img-fluid display-none-mob" />
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row no-gutters bg-dark">
+                                        <div class="col-md-12 text-center font-size-itm-prop">
+                                            <div class="itemname rounded">@menuitem.MenuItemName</div>
+                                        </div>
+                                    </div>
+                                    <div class="row no-gutters bg-dark">
+                                        <div class="col-md-12 text-center font-size-itm-prop">
+                                            <div class="price">@menuitem.MenuItemPrice</div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="item-size">@menuitem.MenuItemServings</div>
+                                    <div class="qty_row">
+                                        <div class="row no-gutters">
+                                            <div class="col-md-12 qty-cls">Quantity</div>
+                                        </div>
+                                        <div class="row no-gutters">
+                                            <div class="col-md-12 text-center">
+                                                <div class="counterbox">
+                                                    <div class="button-container">
+                                                        <button class="cart-qty-plus" type="button" value="+">+</button>
+                                                        <input type="text" name="qty" id="quan" maxlength="3" value="1" class="input-text qty shadow-inside" />
+                                                        <button class="cart-qty-minus" type="button" value="-">-</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="row  no-gutters">
+                                        <div class="col-md-12  font-size-item total"></div>
+                                    </div>
+
+                                    <div class="row no-gutters ">
+                                        <div class="col-md-12  font-size-item">
+                                            <div class="item-info">
+                                                <div class="item_desc">@menuitem.MenuItemDescription</div>
+                                                <div class="item-rest jump-info border-2">@menuitem.MenuItemMeat</div>
+                                                <div class="item-rest jump-info border-2">@menuitem.MenuItemPieces </div>
+                                                <div class="item-rest jump-info border-2"> @menuitem.MenuItemHalfFull</div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    }
+                </div>
+
+
+            </div>
+
+
+        }
+
+    }
+
+</div>
