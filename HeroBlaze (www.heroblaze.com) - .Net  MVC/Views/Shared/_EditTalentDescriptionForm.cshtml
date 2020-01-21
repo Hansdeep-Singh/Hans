@@ -1,0 +1,17 @@
+﻿@model HeroBlaze.Models.PageTalentViewModel
+@using (Html.BeginForm("EditTalent", "Account", FormMethod.Post))
+{
+    <div class="myform">
+        @Html.HiddenFor(Model => Model.utvm.UserTalentID)
+        @Html.HiddenFor(Model=>Model.utvm.TalentName)
+        @Html.HiddenFor(Model=>Model.utvm.UserID)
+        <div class="mytextbox">@Html.TextAreaFor(Model => Model.utvm.TalentDescription, new { @class = "nopadding bdrfiv", @placeholder = "Enter brief description" })</div>
+        <div class="myvalidation">@Html.ValidationMessageFor(Model => Model.utvm.TalentDescription)</div>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" value="Save" class="btn btn-primary bdrfiv button_trigger" />
+    </div>
+
+}

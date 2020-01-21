@@ -1,0 +1,81 @@
+﻿@using HeroBlaze.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <section id="loginForm">
+            @using (Html.BeginForm("LoginUser", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+               
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                  
+                    <div class="col-md-12">
+                        <div id="login_cust">
+                            <div class="txtbxdiv">
+                                <div class="txtbox">
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control bdrrad txtbx", @placeholder = "Enter Email", @ID = "email" })
+
+                                </div>
+
+                                @*<div class="infoe bdrfiv">Password</div>*@
+                                <div class="infoe bdrfiv"><div class="arrow-left bdrfiv"></div><div class="toolbox shadow_out bdrtwo"><p>Your Email</p></div></div>
+
+                                <div class="validation"><p class="bdrfiv">@Html.ValidationMessageFor(m => m.Email)</p></div>
+
+                            </div>
+                            <div class="txtbxdiv">
+                                <div class="txtbox">
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control bdrrad txtbx", @placeholder = "Enter Password", @ID = "pass" })
+                                </div>
+                                <div class="infoa bdrfiv"><div class="arrow-left bdrfiv"></div><div class="toolbox shadow_out bdrtwo"><p>Password</p></div></div>
+                                <div class="validation"><p class="bdrfiv">@Html.ValidationMessageFor(m => m.Password)</p></div>
+                                @*<div class="infoa bdrfiv">Password</div>*@
+                            </div>
+                            
+                            <div class="forgot_password"> @Html.ActionLink("Forgot your password?", "ForgotPassword","Account")</div>
+                           
+                            <input type="submit" value="Log in" class="buton transone btn-default bdrrad" />
+                        </div>
+                        </div>
+                </div>
+
+                @*<div class="form-group">
+                   
+                    <div class="col-md-12">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control bdrrad" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+                @*<div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
+                    </div>
+                </div>*@
+                @*<div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Log in" class="btn btn-default" />
+                    </div>
+                </div>*@
+                @*<p>
+                    @Html.ActionLink("Register as a new user", "Register")
+                </p>*@
+                @* Enable this once you have account confirmation enabled for password reset functionality
+                    <p>
+                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                    </p>*@
+            }
+        </section>
+    </div>
+   
+</div>
+
+

@@ -1,0 +1,31 @@
+﻿@if (ViewBag.VideoMedias != null)
+{
+    foreach (var vid in ViewBag.VideoMedias as List<HeroBlaze.Models.VideoMediaViewModel>)
+    {
+        <div class="row ">
+            <div class="col-md-11 nopadding">
+                <div class="documenttitle bdrtwo">
+                    <a class="bg-success pad-5" href='@Url.Action("RenderVideo", "Account", new {id = vid.VideoMediaID})'>@Html.DisplayFor(modelvid => vid.VideoTitle)</a>
+                    <div class="play_vid">
+                        @*<iframe width="200" height="200" src="https://www.youtube.com/embed/@vid.VideoLink" frameborder="0" gesture="media" allowfullscreen></iframe>*@
+                        <iframe width="200" height="100" src="https://www.youtube.com/embed/@vid.VideoLink" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 nopadding">
+                <div class="del_aud circle">
+                    @using (Html.BeginForm("DeleteVideo", "Account", new { id = vid.VideoMediaID }))
+                    {
+                        <input type="submit" class="del_btn" value="X" onclick="return confirm('Are you sure you want to delete @vid.VideoTitle')" />
+                    }
+                </div>
+
+            </div>
+        </div>
+    }
+}
+
+else if (ViewBag.VideoMedias == null)
+{
+    <div class="return_zero"><p>no Videos</p></div>
+}

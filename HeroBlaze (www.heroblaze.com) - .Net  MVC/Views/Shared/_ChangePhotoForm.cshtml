@@ -1,0 +1,12 @@
+﻿@model HeroBlaze.Models.PageSecureViewModel
+@using (Html.BeginForm("FillPhoto", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(Model => Model.Udvm.UserID)
+    <div class="fl">
+        <label class="myupload">
+            @Html.TextBoxFor(model => model.Udvm.File, new { @class = "myupload", @placeholder = "Upload Your Photo", @type = "file" })
+            Select
+        </label>
+    </div>
+    <div class="fl"> <input type="submit" value="Upload" class="mybutton" /></div>
+}

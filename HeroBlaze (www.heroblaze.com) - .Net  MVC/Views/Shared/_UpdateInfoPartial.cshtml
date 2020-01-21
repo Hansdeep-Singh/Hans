@@ -1,0 +1,128 @@
+﻿@model HeroBlaze.Models.UserDetailViewModel
+@using (Html.BeginForm("UpdateInfo", "Account", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+<div class="form-group">
+    @Html.HiddenFor(m => m.UserDetailID)
+    @Html.HiddenFor(m => m.UserID)
+
+ 
+
+    <div class="row">
+            <div class="col-md-2 ht"></div>
+            <div class="col-md-2 nopadding"><div class="toolwrap shadow_out_inv tab fr"><div class="tool bdrtwo"><p>Write something about you</p></div><div class="arrow-right bdrfiv"></div></div></div>
+            <div class="col-md-6">
+                @Html.TextAreaFor(m => m.UserAbout, new { @ID = "about", @class = "form-control txtareastyle bdrrad fl", @placeholder = "About You",@rows="10" })
+               
+            </div>
+            <div class="col-md-2 nopadding ht"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 ht">
+            <div class="spcr"></div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 ht"></div>
+        <div class="col-md-2 nopadding"><div class="toolwrap shadow_out_inv tfn fr"><div class="tool bdrtwo"><p>First Name</p></div><div class="arrow-right bdrfiv"></div></div></div>
+        <div class="col-md-3">@Html.TextBoxFor(m => m.FirstName, new { @ID = "firstname", @class = "form-control txtstyle bdrrad fl", @placeholder = "First Name" })</div>
+        <div class="col-md-3">@Html.TextBoxFor(m => m.LastName, new { @ID = "lastname", @class = "form-control txtstyle bdrrad fr", @placeholder = "Last Name" })</div>
+        <div class="col-md-2 nopadding"><div class="toolwrap shadow_out tln fl"><div class="arrow-left bdrfiv"></div><div class="tool bdrtwo"><p>Last Name</p></div></div></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 ht"></div>
+        <div class="col-md-2 ht"></div>
+        <div class="col-md-3"> <div class="validation"><p class="bdrfiv shadow_out">@Html.ValidationMessageFor(m => m.FirstName)</p></div></div>
+        <div class="col-md-3"> <div class="validation"><p class="bdrfiv shadow_out">@Html.ValidationMessageFor(m => m.LastName)</p></div></div>
+        <div class="col-md-2 ht"></div>
+    </div>
+
+    <div class="row hei">
+        <div class="col-md-2 ht"></div>
+        <div class="col-md-2 ht"></div>
+        <div class="col-md-2 ht"></div>
+        <div class="col-md-2">
+
+            <div class="toolwrap_mo shadow_out tmo">
+
+                <div class="tool_mo bdrtwo fl"><p>Month</p></div>
+                <div class="arrow-down fl bdrfiv"></div>
+
+            </div>
+
+
+        </div>
+        <div class="col-md-2 ht"></div>
+        <div class="col-md-2 ht"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 ht"></div>
+        <div class="col-md-2 nopadding"><div class="toolwrap shadow_out_inv tyr fr"><div class="tool bdrtwo"><p>Year</p></div><div class="arrow-right bdrfiv"></div></div></div>
+        <div class="col-md-2 ">
+            @Html.DropDownListFor(m => m.DobYear,
+                                            Enumerable.Range(1975, DateTime.Now.Year - 1975).
+                                            Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }),
+                                            "-- Year --", new { @ID = "year", @class = "form-control txtstyle bdrrad", @placeholder = "Year" })
+            @*@Html.TextBoxFor(m => m.DobYear, new { @ID = "year", @class = "form-control txtstyle bdrrad", @placeholder = "Year" })*@
+
+        </div>
+        <div class="col-md-2 ">
+            <div id="mnth">
+
+                @Html.DropDownListFor(m => m.DobMonth,
+                                                            Enumerable.Range(1, 12).
+                                                            Select(i => new SelectListItem
+                                                            {
+                                                                Value = i.ToString(),
+                                                                Text = System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat.GetMonthName(i)
+                                                            }),
+                                                                "-- Month --", new { @ID = "month", @class = "form-control txtstyle bdrrad", @placeholder = "Month" })
+
+                @*@Html.TextBoxFor(m => m.DobMonth, new { @ID = "month", @class = "form-control txtstyle bdrrad", @placeholder = "Month" })*@
+
+            </div>
+        </div>
+        <div class="col-md-2 ">
+            @Html.DropDownListFor(m => m.DobDay,
+                                                 Enumerable.Range(1, 31).
+                                                 Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }),
+                                                 "-- Day --", new { @ID = "day", @class = "form-control txtstyle bdrrad", @placeholder = "Day" })
+            @*@Html.TextBoxFor(m => m.DobDay, new { @ID = "day", @class = "form-control txtstyle bdrrad", @placeholder = "Day" })*@
+
+        </div>
+        <div class="col-md-2 nopadding"><div class="toolwrap shadow_out tdy fl"><div class="arrow-left bdrfiv"></div><div class="tool bdrtwo"><p>Day</p></div></div></div>
+    </div>
+
+    <div class="row mar-top">
+        <div class="col-md-2 ht"></div>
+        <div class="col-md-2 ht"></div>
+        <div class="col-md-6 ht"> </div>
+
+        <div class="col-md-2 ht"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-2  ht"></div>
+        <div class="col-md-6"> <input type="submit" value="Save" class="sub-btn bdrrad" /></div>
+
+        <div class="col-md-2  ht"></div>
+    </div>
+
+
+
+</div>
+
+
+
+   
+
+
+    
+}
+

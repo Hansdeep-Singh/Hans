@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - HeroBlaze.com</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/player")
+    @Scripts.Render("~/bundles/player")
+</head>
+<body>
+
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+                <div class="navbar-collapse collapse">
+
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>*@
+    <div class="container">
+        @*Header Menu Start*@
+
+        <div class="row steelgray">
+
+            <div class="col-md-1 nopadding">
+                <div class="hb_profile shadow_timeline bdrtwo"> <img src="~/Content/images/logoicon_small.png" class="img-responsive" /></div>
+            </div>
+
+            <div class="col-md-10">
+                <div class="profile_status">
+                    <div class="status_bar">
+                        <div class="status">
+                            <div class="head_menu transone aico">
+                                <div class="fr_req"><span>1</span></div>
+                            </div>
+                            <div class="status_title">Invites</div>
+                        </div>
+                        <div class="status">
+                            <div class="head_menu transone bico">
+                                <div class="fr_req"><span>1</span></div>
+                            </div>
+                            <div class="status_title">Friends</div>
+                        </div>
+                        <div class="status">
+                            <div class="head_menu transone cico">
+                                <div class="fr_req"><span>1</span></div>
+                            </div>
+                            <div class="status_title">Friends</div>
+                        </div>
+                        <div class="status">
+                            <div class="head_menu transone dico">
+                                <div class="fr_req"><span>1</span></div>
+                            </div>
+                            <div class="status_title">Friends</div>
+                        </div>
+                        <div class="status">
+                            <div class="head_menu transone aico">
+                                <div class="fr_req"><span>1</span></div>
+                            </div>
+                            <div class="status_title">Friends</div>
+                        </div>
+                    </div>
+
+                    <div class="search_bar pull-right">
+                        <div class="dummytext"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="log_off_jar">@Html.Partial("_LogOff")</div>
+            </div>
+        </div>
+
+        @*Header Menu End*@
+        @RenderBody()
+        @*<hr />*@
+        @*<footer>
+                <p>&copy; @DateTime.Now.Year - HeroBlaze</p>
+            </footer>*@
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/validate")
+    @Scripts.Render("~/bundles/custom")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

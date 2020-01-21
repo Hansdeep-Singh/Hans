@@ -1,0 +1,5 @@
+﻿@using (Html.BeginForm("LogOff", "Account", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <input type="submit" class="log_off transquater shadow_timeline" value="LogOff" />
+}

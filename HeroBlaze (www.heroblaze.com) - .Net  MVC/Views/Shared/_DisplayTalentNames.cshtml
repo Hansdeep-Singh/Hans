@@ -1,0 +1,28 @@
+﻿
+@if (ViewBag.TalentNames != null)
+{
+    foreach (var tal in ViewBag.TalentNames as List<HeroBlaze.Models.UserTalentViewModel>)
+    {
+<div class="display_tal" >
+<div class="display_tal_left">
+
+    
+        <a class="transone" href='@Url.Action("Talent", "Account", new {id = tal.UserTalentID})'>@Html.DisplayFor(Model => tal.TalentName)</a>
+    
+</div>
+<div class="display_tal_right">
+    
+        <div class="del_aud">
+            @using (Html.BeginForm("DeleteTalent", "Account", new { id = tal.UserTalentID }))
+        {
+            <input type="submit" class="del_btn circle" value="x" onclick="return confirm('Are you sure you want to delete @tal.TalentName')" />
+         }
+        </div>
+</div></div>
+
+
+
+
+
+    }
+    }

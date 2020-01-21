@@ -1,0 +1,27 @@
+﻿@if (ViewBag.ImageMedias != null)
+{
+    foreach (var img in ViewBag.ImageMedias as List<HeroBlaze.Models.ImageMediaViewModel>)
+    {
+        <div class="row ">
+            <div class="col-md-11 nopadding">
+                <div class="images_page bdrtwo">
+                    <img src="@img.PhotoStringThumb" alt="@img.ImageName" />
+                </div>
+            </div>
+            <div class="col-md-1 nopadding">
+                <div class="del_aud circle">
+                    @using (Html.BeginForm("DeleteImage", "Account", new { id = img.ImageMediaID }))
+                    {
+                        <input type="submit" class="del_btn" value="X" onclick="return confirm('Are you sure you want to delete @img.ImageName')" />
+                    }
+                </div>
+
+            </div>
+        </div>
+    }
+}
+
+else if (ViewBag.DocumentMedias == null)
+{
+    <div class="return_zero"><p>no documents</p></div>
+}

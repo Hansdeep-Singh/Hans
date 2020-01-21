@@ -1,0 +1,25 @@
+﻿@model HeroBlaze.Models.PageTalentViewModel
+@using (Html.BeginForm("AddImage", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<div class="myform">
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(Model => Model.utvm.UserTalentID)
+    <div class="mytextbox">
+        @Html.TextBoxFor(model => model.imvm.ImageName, new { @class = "textbox bdrfiv", @placeholder = "Name of photo." })
+    </div>
+    <div class="myvalidation bdrtwo"> @Html.ValidationMessageFor(model => model.imvm.ImageName)</div>
+
+    <div class="fileupload_div">
+        <label class="myupload">
+            @Html.TextBoxFor(model => model.imvm.File, new { @class = "myupload", @placeholder = "Upload Photo", @type = "file" })
+            Select Photo
+        </label>
+    </div>
+</div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" value="Save" class="btn btn-primary bdrfiv button_trigger" />
+    </div>
+
+}

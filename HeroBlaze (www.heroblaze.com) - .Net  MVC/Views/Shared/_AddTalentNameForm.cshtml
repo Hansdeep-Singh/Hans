@@ -1,0 +1,8 @@
+﻿@model HeroBlaze.Models.PageSecureViewModel
+@using (Html.BeginForm("UpdateTalent", "Account", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(Model => Model.Udvm.UserID)
+    @Html.TextBoxFor(model => model.Utvm.TalentName, new { @class = "talent_txt bdrfiv", @placeholder = "Name Your Talent" })
+    <input type="submit" value="Save" class="btn_upload bdrfiv" />
+}

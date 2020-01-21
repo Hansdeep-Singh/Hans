@@ -1,0 +1,32 @@
+﻿@model HeroBlaze.Models.PageTalentViewModel
+@using (Html.BeginForm("AddVideo", "Account", FormMethod.Post))
+{
+
+
+    <div class="myform">
+        @Html.HiddenFor(Model => Model.utvm.UserTalentID)
+        <div class="mytextbox">
+            @Html.TextBoxFor(model => model.vmvm.VideoTitle, new { @class = "textbox nopadding bdrfiv", @placeholder = "Video Name" })
+        </div>
+        <div class="myvalidation bdrtwo"> @Html.ValidationMessageFor(model => model.vmvm.VideoTitle)</div>
+
+        <div class="mytextbox">@Html.TextBoxFor(model => model.vmvm.VideoLink, new { @class = "textbox bdrfiv", @placeholder = "YouTube Video Link" })</div>
+        <div class="myvalidation bdrtwo">@Html.ValidationMessageFor(model => model.vmvm.VideoLink)</div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" value="Save" class="btn btn-primary bdrfiv button_trigger" />
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+}

@@ -1,0 +1,42 @@
+﻿@model HeroBlaze.Models.PageTalentViewModel
+@using (Html.BeginForm("AddAudio", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <div class="myform">
+        @Html.HiddenFor(Model => Model.utvm.UserTalentID)
+        <div class="mytextbox">
+            @Html.TextBoxFor(model => model.amvm.AudioTitle, new { @class = "textbox nopadding bdrfiv", @placeholder = "Title", @ID = "audio_title" })
+        </div>
+        <div class="myvalidation bdrtwo"> @Html.ValidationMessageFor(model => model.amvm.AudioTitle)</div>
+        @*<div class="myvalidation">@Html.ValidationMessageFor(model => model.amvm.AudioTitle)</div>*@
+        <div class="mytextbox">@Html.TextBoxFor(model => model.amvm.Description, new { @class = "textbox bdrfiv", @placeholder = "Description" })</div>
+        <div class="myvalidation bdrtwo">@Html.ValidationMessageFor(model => model.amvm.Description)</div>
+        <div class="fileupload_div">
+            <label class="myupload">
+                @Html.TextBoxFor(model => model.amvm.File, new { @class = "myupload", @placeholder = "Upload Audio", @type = "file" })
+                Select Audio File
+            </label>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" value="Save" class="btn btn-primary bdrfiv button_trigger" />
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
