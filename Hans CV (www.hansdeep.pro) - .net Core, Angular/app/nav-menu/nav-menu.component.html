@@ -1,0 +1,170 @@
+
+
+<!--<header>
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark text-light bg-menu border-bottom box-shadow">
+    <div class="container">
+      <a class="navbar-brand" [routerLink]="['/']">CV-Hans</a>
+      <button class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target=".navbar-collapse"
+              aria-label="Toggle navigation"
+              [attr.aria-expanded]="isExpanded"
+              (click)="toggle()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
+           [ngClass]="{ show: isExpanded }">
+        <ul class="navbar-nav flex-grow">
+          <li class="nav-item"
+              [routerLinkActive]="['link-active']"
+              [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
+          </li>
+
+          <li class="nav-item dropdown" [routerLinkActive]="['link-active']">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              EDUCATION
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" [routerLink]="['/btech']">Batchelor of Computer Science</a>
+              <a class="dropdown-item" [routerLink]="['/gdit']">G.D.I.T</a>
+              <a class="dropdown-item" [routerLink]="['/award']">Award for all round performance</a>
+            </div>
+          </li>
+ 
+
+          <li class="nav-item dropdown" [routerLinkActive]="['link-active']">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              BOOTSTRAP THEMES
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="http://hansdeep-001-site25.htempurl.com">Fitness Theme</a>
+              <a class="dropdown-item" href="http://hansdeep-001-site26.htempurl.com">Fashion Theme</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown" [routerLinkActive]="['link-active']">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             ANGULAR DASHBOARDS
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" [routerLink]="['/polaris']">Ng-Dashboard-Polaris - REAL TIME</a>
+              <a class="dropdown-item" [routerLink]="['/sigma']">Ng-Dashboard-Sigma - REAL TIME</a>
+              <a class="dropdown-item" [routerLink]="['/elite']">Ng-Dashboard-Elite</a>
+              <a class="dropdown-item" [routerLink]="['/boardfour']">Ng-Dashboard-NightBlue</a>
+              <a class="dropdown-item" [routerLink]="['/boardfive']">Ng-Dashboard-Blaze</a>
+              <a class="dropdown-item" [routerLink]="['/boardsix']">Ng-Dashboard-DeepSea</a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown" [routerLinkActive]="['link-active']">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              PROJECTS
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" [routerLink]="['/jarvis']">Jarvis Field</a>
+              <a class="dropdown-item" [routerLink]="['/optus']">Optus</a>
+              <a class="dropdown-item" [routerLink]="['/vimmi']">Vimmigration</a>
+              <a class="dropdown-item" [routerLink]="['/land']">LandDivision</a>
+              <a class="dropdown-item" [routerLink]="['/shor']">Shorbazaar</a>
+              <a class="dropdown-item" [routerLink]="['/hero']">HeroBlaze</a>
+              <a class="dropdown-item" [routerLink]="['/roster']">Online Roster System</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>-->
+
+  
+    <header>
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-nav-menu"><div class="container">
+  <a class="navbar-brand" href="#">CV-Hans</a>
+  <button class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarMain"
+          aria-label="Toggle navigation"
+          [attr.aria-expanded]="isExpanded"
+          (click)="toggle()">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarMain">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item"
+          [routerLinkActive]="['link-active']"
+          [routerLinkActiveOptions]="{ exact: true }">
+        <a class="nav-link text-light" [routerLink]="['/']">HOME</a>
+      </li>
+
+      <li class="nav-item dropdown" [routerLinkActive]="['link-active']">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          ANGULAR DASHBOARDS
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" [routerLink]="['/polaris']">Ng-Dashboard-Polaris - REAL TIME</a>
+          <a class="dropdown-item" [routerLink]="['/sigma']">Ng-Dashboard-Sigma - REAL TIME</a>
+          <!--<a class="dropdown-item" [routerLink]="['/elite']">Ng-Dashboard-Elite</a>
+      <a class="dropdown-item" [routerLink]="['/boardfour']">Ng-Dashboard-NightBlue</a>
+      <a class="dropdown-item" [routerLink]="['/boardfive']">Ng-Dashboard-Blaze</a>
+      <a class="dropdown-item" [routerLink]="['/boardsix']">Ng-Dashboard-DeepSea</a>-->
+        </div>
+      </li>
+
+      <li class="nav-item dropdown" [routerLinkActive]="['link-active']">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          PROJECTS
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="http://www.chatnyou.com" target="_blank">Free Online Chatting (.Net Core Application)</a>
+          <a class="dropdown-item" href="https://subaru.cpmaustralia.com.au/" target="_blank">Subaru-Takata Air Bag Replacement</a>
+          <a class="dropdown-item" [routerLink]="['/jarvis']">Jarvis Field</a>
+          <a class="dropdown-item" [routerLink]="['/optus']">Optus</a>
+          <a class="dropdown-item" href="http://hansdeep-001-site23.atempurl.com/Home/Order" target="_blank">Online Order Page</a>
+          <a class="dropdown-item" [routerLink]="['/vimmi']">Vimmigration</a>
+          <a class="dropdown-item" [routerLink]="['/land']">LandDivision - 3D</a>
+          <a class="dropdown-item" [routerLink]="['/shor']">Shorbazaar</a>
+          <a class="dropdown-item" [routerLink]="['/hero']">HeroBlaze</a>
+          <a class="dropdown-item" [routerLink]="['/roster']">Online Roster System</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown" [routerLinkActive]="['link-active']">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          EDUCATION
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" [routerLink]="['/btech']">Bachelor of Computer Science</a>
+          <a class="dropdown-item" [routerLink]="['/gdit']">G.D.I.T</a>
+          <a class="dropdown-item" [routerLink]="['/award']">Award for all round performance</a>
+        </div>
+      </li>
+
+
+
+      <li class="nav-item dropdown" [routerLinkActive]="['link-active']">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          BOOTSTRAP THEMES
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="http://hansdeep-001-site25.htempurl.com" target="_blank">Fitness Theme</a>
+          <a class="dropdown-item" href="http://hansdeep-001-site26.htempurl.com" target="_blank">Fashion Theme (Login)</a>
+        </div>
+      </li>
+
+
+
+
+
+
+    </ul>
+  </div>
+  </div>
+</nav>
+    </header>
+

@@ -1,0 +1,57 @@
+<div class="container-fluid bg-menu m-0 polaris font-titillium">
+
+  <div class="row">
+    <div class="col-md-2 text-light bg-menu">
+      <h2>Menu</h2>
+      <app-polarismenu></app-polarismenu>
+    </div>
+    <div class="col-md-10 test bg-polaris-body">
+      <div class="row text-center text-light"><div class="col"><h2>Update the database to see realtime updates on chart, thanks</h2></div></div>
+      <div class="row m-1 bg-box">
+        <div class="col inp text-center text-light">
+          <app-updatechart></app-updatechart>
+        </div>
+      </div>
+      <div class="row m-1 ">
+        <div class="col box bg-box m-1 ">
+          <h3 class="text-light">Electricity Bill</h3>
+          <p class="text-light">Your monthly gas bill</p>
+          <!--<app-chartone></app-chartone>-->
+          <app-chartone></app-chartone>
+        </div>
+        <div class="col box bg-box m-1 "> <h3 class="text-light">Electricity Forcast Usage</h3><!--PieChart--><app-charttwo></app-charttwo></div>
+        <div class="col  text-center box bg-box m-1 ">
+
+          <div class="row text-light ">
+            <div class="col">
+              <i class="fab ico fa-algolia"></i><p>Months June and July had max usage</p>
+            </div>
+
+            <div class="col">
+              <i class="fab ico fa-aws"></i><p>AWS Ratings</p>
+            </div>
+
+          </div>
+
+          <div class="row text-light m-1">
+            <div class="col">
+              <i class="fab ng-col fa-angular"></i><p>Angular is awesome.</p>
+            </div>
+
+            <div class="col">
+              <i class="fas ico fa-bullhorn"></i><p>Announcements</p>
+            </div>
+
+          </div>
+
+
+
+        </div>
+      </div>
+      <div class="row m-1">
+        <div class="col bg-box"> <app-chartthree></app-chartthree> </div>
+      </div>
+
+    </div>
+  </div>
+</div>

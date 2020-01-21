@@ -1,0 +1,17 @@
+
+<form #chartForm="ngForm" (ngSubmit)="PutData()">
+
+    <div class="row text-center">
+      <div class="col"><h4>Jan</h4><input [(ngModel)]="model.valone" name="valone" type="number" /> </div>
+      <div class="col"><h4>Feb</h4><input [(ngModel)]="model.valtwo" name="valtwo" type="number" /></div>
+      <div class="col"><h4>Mar</h4><input [(ngModel)]="model.valthree" name="valthree" type="number" /></div>
+      </div>
+    <div class="row">
+      <div class="col"><h4>Apr</h4><input [(ngModel)]="model.valfour" name="valfour" type="number" /></div>
+      <div class="col"><h4>May</h4><input [(ngModel)]="model.valfive" name="valfive" type="number" /></div>
+      <div class="col"><h4>Jun</h4><input [(ngModel)]="model.valsix" name="valsix" type="number" /></div>
+    </div>
+ 
+  <div class="row m-3"><div class="col-md text-center"><button class="btn-bg btn text-light rounded" (click)="PutData()">Update the Database</button></div></div>
+</form>
+
