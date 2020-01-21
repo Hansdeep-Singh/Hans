@@ -1,0 +1,44 @@
+﻿@using chatnyou.Models
+@model LognReg
+
+
+@using (Html.BeginForm("Login", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    
+    <div class="container mt-3 bg-2 pt-2 pb-2 shadow rounded ">
+        <div class="row"><div class="col"><h4 class="text-center">Login</h4></div></div>
+        <div class="row mt-2">
+            <div class="col">
+                @Html.TextBoxFor(m => m.Login.Email, new { @class = "form-control", @placeholder = "User Name" })
+     
+                <span asp-validation-for="Login.Email" class="text-danger valmess"></span>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col">
+                @Html.PasswordFor(m => m.Login.Password, new { @class = "form-control", @placeholder = "Password" })
+        
+                <span asp-validation-for="Login.Password" class="text-danger valmess"></span>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col">
+                <div class="checkbox">
+                    @Html.CheckBoxFor(m => m.Login.RememberMe)
+                    @Html.LabelFor(m => m.Login.RememberMe)
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col text-center">
+                <input type="submit" class="btn nav-bg text-light" value="LOGIN" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

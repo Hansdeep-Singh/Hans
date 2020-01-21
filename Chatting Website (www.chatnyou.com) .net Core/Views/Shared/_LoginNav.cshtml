@@ -1,0 +1,98 @@
+﻿@using chatnyou.Models
+@model LognReg
+
+
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+<div class="btn"></div>
+
+@if (!SignInManager.IsSignedIn(User))
+{
+
+    @using (Html.BeginForm("Login", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="navbar-nav flex-grow-1">
+            <li class="valmess">@TempData["Error"]</li>
+            <li class="position-relative">
+                <div class="txtbox-wrap position-relative">
+                    <div class="position-absolute inputlbl"> User name</div>
+                    @Html.TextBoxFor(m => m.Login.Email, new { @class = "form-control textinput" })
+                </div>
+                <span asp-validation-for="Login.Email" class="valmess"></span>
+
+            </li>
+            <li class="position-relative  mar-sm">
+                <div class="txtbox-wrap position-relative">
+                    <div class="position-absolute inputlbl">Password</div>
+                    @Html.PasswordFor(m => m.Login.Password, new { @class = "form-control textinput" })
+                </div>
+                <span asp-validation-for="Login.Password" class="valmess"></span>
+            </li>
+
+
+            <li>
+
+                @Html.CheckBoxFor(m => m.Login.RememberMe)
+                @Html.LabelFor(m => m.Login.RememberMe, new { @class = " mt-2 text-light" })
+
+            </li>
+            <li>
+
+                <input type="submit" class="btn nav-bg border border-info text-light" value="LOGIN" />
+
+            </li>
+        </ul>
+
+    }
+
+}
+
+else if (SignInManager.IsSignedIn(User))
+{
+    <ul class="navbar-nav text-light">
+        <li>
+            <i class="fas trigmsg fa-2x fa-comments"></i>
+            <div class="newchats shadow">
+            </div>
+        </li>
+        <li>
+
+        </li>
+        <li >
+            <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="btn btn-info ">Logout</button>
+            </form>
+        </li>
+    </ul>
+
+    <script>
+        $(document).ready(function () {
+            var input = document.getElementById("messageInput");
+
+            // Execute a function when the user releases a key on the keyboard
+            input.addEventListener("keyup", function (event) {
+                // Number 13 is the "Enter" key on the keyboard
+                if (event.keyCode === 13) {
+                    // Cancel the default action, if needed
+                    event.preventDefault();
+                    // Trigger the button element with a click
+                    document.getElementById("sendButton").click();
+                }
+            });
+        });
+    </script>
+
+}
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

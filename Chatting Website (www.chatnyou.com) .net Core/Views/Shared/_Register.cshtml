@@ -1,0 +1,73 @@
+﻿@using chatnyou.Models
+@model LognReg
+
+
+@using (Html.BeginForm("Register", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="container mt-3 bg-2 pt-2 pb-2 shadow rounded ">
+        <div class="row"><div class="col"> <h2 class="head-3">Create your account and start chating</h2></div></div>
+
+        <div class="row mt-2">
+            <div class="col">
+                @Html.TextBoxFor(m => m.Register.Email, new { @class = "form-control", @placeholder = "Email Address" })
+                <span asp-validation-for="Register.Email" class="text-danger valmess"></span>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col">
+                @Html.TextBoxFor(m => m.Register.UserName, new { @class = "form-control", @placeholder = "Chat User Name" })
+                <span asp-validation-for="Register.UserName" class="text-danger valmess"></span>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col">
+                @Html.PasswordFor(m => m.Register.Password, new { @class = "form-control", @placeholder = "Password" })
+                <span asp-validation-for="Register.Password" class="text-danger valmess"></span>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col">
+                @Html.PasswordFor(m => m.Register.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
+                <span asp-validation-for="Register.ConfirmPassword" class="text-danger valmess"></span>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+
+            <div class="col">
+                @{ List<SelectListItem> Gender = new List<SelectListItem>();
+
+                    Gender.Add(new SelectListItem { Text = "Male", Value = "Male" });
+                    Gender.Add(new SelectListItem { Text = "Female", Value = "Female" });
+                }
+
+                @Html.DropDownListFor(model => model.Register.Sex, Gender, new { @class = "form-control", @placeholder = "Your Age" })
+
+
+
+                <span asp-validation-for="Register.Sex" class="text-danger valmess"></span>
+            </div> <div class="col">
+             @Html.TextBoxFor(m => m.Register.Age, new { @class = "form-control", @placeholder = "Your Age" })
+             <span asp-validation-for="Register.Age" class="text-danger valmess"></span>
+</div>
+        </div>
+
+        <div class="row mt-2">
+
+            <div class="col">
+                @Html.TextBoxFor(m => m.Register.Country, new { @class = "form-control", @placeholder = "Country" })
+                <span asp-validation-for="Register.Country" class="text-danger valmess"></span>
+            </div> <div class="col">
+    @Html.TextBoxFor(m => m.Register.State, new { @class = "form-control", @placeholder = "State" })
+    <span asp-validation-for="Register.State" class="text-danger valmess"></span>
+</div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col text-center">
+                <input type="submit" class="btn nav-bg text-light" value="Start Chat" />
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,204 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-3">
+
+            <div id="test"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4 col-sm-4 col-md-3 col-lg-2  col-xl-2">
+            <h1>Users</h1>
+            @*Users List*@
+            <div class="usrlist">
+
+            </div>
+        </div>
+        <div class="col-8 col-sm-8 col-md-9 col-lg-10   col-xl-10">
+            <div class="row d-none">
+                <div class="col-8">Message From </div>
+                <div class="col-4 d-none"><input type="text" disabled id="userInput" value="@User.Identity.Name" /></div>
+            </div>
+            <div class="row">
+                <div class="col-12 messageto h3"> Please select the user  </div>
+                <input type="text" id="messageTo" hidden class="d-none" />
+            </div>
+            <div class="row mt-2">
+
+                <div class="col-12">
+                    <input id="messageInput" name="message" class="messagebox">
+                </div>
+            </div>
+            <div class="row">&nbsp;</div>
+            <div class="row">
+                <div class="col">
+                    <input type="button" id="sendButton" class="btn btn-dark m-1" value="Send Message" />
+                </div>
+                @*<div class="col">
+                        <input type="button" id="getButton" class="btn btn-dark m-1" value="Get Valid Users" />
+                    </div>*@
+
+                <div class="col">
+                    <input type="button" id="getNewChats" class="btn btn-dark m-1" value="Get New Chats" />
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-12">
+                    <hr />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="contain">
+                        <div class="divin">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>
+
+
+<script type="text/javascript">
+
+    window.onbeforeunload = function (e) {
+        updateuser();
+     return 'Please press the Logout button to logout.';
+     };
+
+
+    var timer;
+    timer = setTimeout(function () { $("#test").html("Start"); }, 1000 * 150);
+    var i = 0;
+    $("*").hover(function () {
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+            updateuser();
+            i += 1;
+            var inh = "Start Again" + i;
+            $("#test").html(inh);
+
+        }, 1000 * 15000);
+
+    });
+
+
+    updateuser = () => {
+        $.ajax({
+            url: '@Url.Action("UpdateUser","Home")',
+            success: function () { },
+            error: function () { },
+            complete: function () { }
+        });
+
+
+
+    }
+
+</script>
+
+
+}
+else
+{
+
+
+@*<i class="fab fa-rocketchat"></i>
+    <i class="fab fa-reddit-alien"></i>s
+    <i class="fas fa-space-shuttle"></i>
+    <i class="fas fa-user-astronaut"></i>
+    <i class="fas fa-carrot"></i>
+    <i class="fas fa-fan"></i>
+    <i class="fab fa-affiliatetheme"></i>
+    <i class="fab fa-angellist"></i>
+    <i class="fas fa-assistive-listening-systems"></i>
+
+
+*@
+
+@*<div class="container-fluid nop bg-1">*@
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6">
+
+            <div class="row flex-container">
+                <div class="col text-center">
+                    <h1 class="head-2 font-montserrat col-violet">Its as simple as it gets !</h1>
+                </div>
+            </div>
+
+            <div class="row flex-container">
+                <div class="col col-xl-6 text-center">
+                    <div class="btn btnrego btn-primary">Create Account</div>
+                    <div class="rego position-absolute">
+                        <partial name="_Register" />
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2"><div class="col text-center"><div class="display-4">Find your Mate</div></div></div>
+            <div class="row">
+                <div class="text-center flex-column col">
+                    <img src="~/Images/pic1.jpg" class="img-fluid rounded shadow shadow-cus rounded-circle">
+                    <h1>Wow</h1>
+                    <p>I finally found my perfect match, thanks to chatnYou</p>
+                </div>
+                <div class=" text-center col">
+                    <img src="~/Images/pic2.jpg" class="img-fluid rounded shadow shadow-cus rounded-circle">
+                </div>
+                <div class=" text-center col">
+                    <img src="~/Images/pic3.jpg" class="img-fluid rounded shadow shadow-cus rounded-circle">
+                </div>
+
+            </div>
+            <div class="row">
+                <div class=" text-center col">
+                    <img src="~/Images/pic4.jpg" class="img-fluid rounded shadow shadow-cus rounded-circle">
+                </div>
+                <div class=" text-center col">
+                    <img src="~/Images/pic5.jpg" class="img-fluid rounded shadow shadow-cus rounded-circle">
+                </div>
+                <div class=" text-center col">
+                    <img src="~/Images/pic6.jpg" class="img-fluid rounded shadow shadow-cus rounded-circle">
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="col-lg-6">
+            <div class="row"><div class="col text-center">  <div class="head-1 font-rubic colr-2">Chat-n-you is a Free Chat </div></div></div>
+            <div class="row"><div class="col  text-center">   <img src="~/Images/people2.svg" width="700" class="img-fluid rounded shadow shadow-cus rounded-circle"> @*<img src="~/Images/woman.jpg" width="700" class="img-fluid rounded shadow shadow-cus rounded-circle">*@</div></div>
+        </div>
+    </div>
+
+</div>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
