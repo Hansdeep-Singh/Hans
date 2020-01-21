@@ -1,0 +1,55 @@
+﻿@model VeraCityImmigration.Models.DocumentViewModel
+    @using (Html.BeginForm("EditDocument", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="row marginbot-10">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Document Name:</label>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(model => model.DocumentName, new { @class = "form-control", @placeholder = "Enter name of the Document" })
+                </div>
+                <div class="col-sm-3">
+                    <div class="validation"> @Html.ValidationMessageFor(model => model.DocumentName)</div>
+                </div>
+            </div>
+        </div>
+
+        @*<div class="row marginbot-10">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Document Type:</label>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(model => model.DocumentType, new { @class = "form-control", @placeholder = "Enter Type of Document" })
+                </div>
+                <div class="col-sm-3">
+                    <div class="validation"> @Html.ValidationMessageFor(model => model.DocumentType)</div>
+                </div>
+            </div>
+        </div>*@
+
+        <div class="row marginbot-10">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Upload Form(Only PDF format accepted):</label>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(model => model.file, new { @class = "form-control",@type = "file", @placeholder = "Upload File" })
+                </div>
+                <div class="col-sm-3">
+                    <div class="validation"> @Html.ValidationMessageFor(model => model.DocumentType)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row marginbot-10">
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Save</button>
+                    <div class="btn btn-default">   @Html.ActionLink("Finished", "Welcome", new { @id = Model.ClientId })</div>
+                    
+                </div>
+            </div>
+        </div>
+
+        @Html.HiddenFor(model => model.ClientId)
+        @Html.HiddenFor(model => model.DocumentId)
+
+    }

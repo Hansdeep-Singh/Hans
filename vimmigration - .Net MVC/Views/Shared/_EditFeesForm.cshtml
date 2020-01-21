@@ -1,0 +1,82 @@
+﻿@model VeraCityImmigration.Models.AdminClientFeeViewModel
+@using (Html.BeginForm("EditFees", "Admin", FormMethod.Post))
+{
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="row marginbot-10">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Installment:</label>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(model => model.Installment, new { @class = "form-control", @placeholder = "Enter Amount" })
+                </div>
+                <div class="col-sm-3">
+                    <div class="validation"> @Html.ValidationMessageFor(model => model.Installment)</div>
+                </div>
+            </div>
+        </div>
+
+       
+            List<SelectListItem> PaymentType = new List<SelectListItem>();
+            PaymentType.Add(new SelectListItem
+            {
+                Text = "Cash",
+                Value = "Cash"
+            });
+            PaymentType.Add(new SelectListItem
+            {
+                Text = "Credit card",
+                Value = "Credit card",
+                Selected = true
+            });
+            PaymentType.Add(new SelectListItem
+            {
+                Text = "Bank Transfer",
+                Value = "Bank Transfer"
+            });
+        
+
+        <div class="row marginbot-10">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Installment Type:</label>
+                <div class="col-sm-7">
+                    
+                    @Html.DropDownListFor(model => model.InstallmentType, PaymentType, "-- Select Payment --", new { @class = "form-control", @placeholder = "Select Type Of Installment" })
+                </div>
+                <div class="col-sm-3">
+                    <div class="validation"> @Html.ValidationMessageFor(model => model.InstallmentType)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row marginbot-10">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Date Money Recieved</label>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(model => model.InstallmentDate, new { @class = "form-control", @placeholder = "Date Money Recieved", @Id = "datepicker" })
+                </div>
+                <div class="col-sm-3">
+                    <div class="validation"> @Html.ValidationMessageFor(model => model.InstallmentDate)</div>
+                </div>
+            </div>
+        </div>
+        @Html.HiddenFor(model => model.ClientId)
+        @Html.HiddenFor(model => model.AdminClientFeeId)
+        <div class="row marginbot-10">
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Save</button>
+
+                  
+                </div>
+
+                    @*<div class="btn btn-default">   @Html.ActionLink("Update Payment", "Index")</div>*@
+                    
+                </div>
+            </div>
+        
+    }
+
+@using (Html.BeginForm("UpdateBill", "Admin", new { id = Model.ClientId }))
+{
+    <input type="submit" class="btn btn-default" value="Update Bill" onclick="return confirm('Update Payment Details? ')" />
+}

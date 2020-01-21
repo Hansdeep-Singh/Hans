@@ -1,0 +1,105 @@
+﻿@model VeraCityImmigration.Models.AdminClientDetailViewModel
+@using (Html.BeginForm("EditClient", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="row marginbot-10">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd">Application Number:</label>
+            <div class="col-sm-7">
+                @Html.TextBoxFor(model => model.ApplicationNumber, new { @class = "form-control", @placeholder = "Application Number" })
+            </div>
+            <div class="col-sm-3">
+                <div class="validation"> @Html.ValidationMessageFor(model => model.ApplicationNumber)</div>
+            </div>
+        </div>
+    </div>
+    <div class="row marginbot-10">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd">Application Details:</label>
+            <div class="col-sm-7">
+                @Html.TextBoxFor(model => model.ApplicationDetail, new { @class = "form-control", @placeholder = "Application Details" })
+            </div>
+            <div class="col-sm-3">
+                <div class="validation"> @Html.ValidationMessageFor(model => model.ApplicationDetail)</div>
+            </div>
+        </div>
+    </div>
+        <div class="row marginbot-10">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Total Fees $ </label>
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(model => model.TotalFees, new { @class = "form-control", @placeholder = "Total Fees" })
+                </div>
+                <div class="col-sm-3">
+                    <div class="validation"> @Html.ValidationMessageFor(model => model.TotalFees)</div>
+                </div>
+            </div>
+        </div>
+
+    List<SelectListItem> ClientStatus = new List<SelectListItem>();
+    ClientStatus.Add(new SelectListItem
+    {
+        Text = "Approved",
+        Value = "Approved",
+        Selected = true
+    });
+    ClientStatus.Add(new SelectListItem
+    {
+        Text = "Declined",
+        Value = "Declined",
+    });
+    ClientStatus.Add(new SelectListItem
+    {
+        Text = "Pending",
+        Value = "Pending"
+    });
+
+        <div class="row marginbot-10">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Total Fees $ </label>
+                <div class="col-sm-7">
+                    @Html.DropDownListFor(model => model.Status, ClientStatus, "-- Select Status --", new { @class = "form-control", @placeholder = "Select Status" })
+                </div>
+                <div class="col-sm-3">
+                    <div class="validation"> @Html.ValidationMessageFor(model => model.Status)</div>
+                </div>
+            </div>
+        </div>
+            @*<div class="row marginbot-10">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="pwd">Ammount Paid</label>
+                    <div class="col-sm-7">
+                        @Html.TextBoxFor(model => model.Paid, new { @class = "form-control", @placeholder = "Ammount Paid" })
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="validation"> @Html.ValidationMessageFor(model => model.Paid)</div>
+                    </div>
+                </div>
+            </div>*@
+            @*<div class="row marginbot-10">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="pwd">Balance Amount</label>
+                    <div class="col-sm-7">
+                        @Html.TextBoxFor(model => model.Balance, new { @class = "form-control", @placeholder = "Phone Number" })
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="validation"> @Html.ValidationMessageFor(model => model.Balance)</div>
+                    </div>
+                </div>
+            </div>*@
+
+            @Html.HiddenFor(model => model.ClientId)
+            @Html.HiddenFor(model => model.AdminClientDetailId)
+            
+
+            <div class="row marginbot-10">
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Save</button>
+                    </div>
+                </div>
+            </div>
+}
+
+

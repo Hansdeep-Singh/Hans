@@ -1,0 +1,51 @@
+﻿@foreach (var item in ViewBag.ClientDetailFull as List<VeraCityImmigration.Models.AdminClientDetailViewModel>)
+{
+   
+                <tr>
+                    <td> <a href="@Url.Action("AdminClientDetail", new {id=item.ClientId })">@item.FirstName @item.Lastname</a></td>
+                    <td>@item.ApplicationNumber </td>
+                    <td>@item.TotalFees</td>
+                    <td>@item.Paid</td>
+                    <td>@item.Balance</td>
+                    <td>@item.visaduedate</td>
+                    <td>@item.Status</td>
+                    <td>@Html.ActionLink("Edit Fees", "EditFees", new { id = item.ClientId })</td>
+                    <td>@Html.ActionLink("Edit Client", "EditClient", new { id = item.ClientId })</td>
+                    
+                </tr>
+
+
+          
+
+            @*<div class="col-lg-2">
+                <div class="bg-success">
+                    <a href="@Url.Action("AdminClientDetail", new {id=item.ClientId })">@item.FirstName @item.Lastname</a>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="bg-success">@item.ApplicationNumber </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2">
+                <div class="bg-success">
+                    @item.TotalFees</div>
+                </div>
+            <div class="col-lg-2 col-md-2 col-sm-2">
+                <div class="bg-success">
+                    @item.Paid</div>
+                </div>
+            <div class="col-lg-1 col-md-1 col-sm-1">
+                <div class="bg-success">
+                    @item.Balance</div>
+                </div>
+            <div class="col-lg-1 col-md-1 col-sm-1">
+                <div class="bg-success">
+                    @item.visaduedate</div>
+                </div>
+            <div class="col-lg-1 col-md-1 col-sm-1">
+                @Html.ActionLink("Edit Fees", "EditFees", new { id = item.ClientId })
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1">
+                @Html.ActionLink("Edit Client", "EditClient", new { id = item.ClientId })
+            </div>*@
+      
+}

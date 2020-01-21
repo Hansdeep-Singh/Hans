@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "EditFees";
+    Layout = "~/Views/Shared/_LayoutSecureAdmin.cshtml";
+}
+
+<section id="intro" class="intro padding_none">
+    <div class="container marginbot-30">
+        <h2>EditFees</h2>
+        @Html.Partial("_EditFeesForm")
+
+    </div>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-11 col-md-10 col-sm-8">
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-heading"><h1>Installments</h1></li>
+                    <li class="list-group-item list-group-item-heading"><h3>Total Sum =@ViewBag.Sum </h3></li>
+                    
+                </ul>
+                <div class=" col-lg-3 bg-info marginbot-10">
+                    Installment Money
+                </div>
+                <div class=" col-lg-3 bg-info marginbot-10">
+                   Installment Date
+                </div>
+                <div class=" col-lg-3 bg-info marginbot-10">
+                    Installment Type
+                </div>
+                <div class=" col-lg-3 bg-info marginbot-10">
+                   Delete Instalment  
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-11 col-md-10 col-sm-8">
+                <ul class="list-group">
+                    
+                    @Html.Partial("_DisplayInstallments")
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</section>

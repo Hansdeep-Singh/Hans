@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSecureAdmin.cshtml";
+}
+
+<section id="intro" class="home-section r">
+   
+   
+
+    @*<div class="container">
+        <h2>Welcome Admin</h2>
+        <div class="row">
+            <div class="col-lg-3">
+                Search By Name
+            </div>
+
+            <div class="col-lg-3">
+                Search Box
+            </div>
+            <div class="col-lg-3">
+                Search Button
+            </div>
+        </div>
+        </div>*@
+
+    <div class="container">
+        <h2 >Welcome Admin</h2>
+        <div class="row">
+            <table class="table">
+                <tr>
+                    <th> Click Name  </th>
+                    <th>Application Number</th>
+                    <th>Total Fees $</th>
+                    <th>Fees Paid</th>
+                    <th>Balance</th>
+                    <th>Visa Due Date</th>
+                    <th>Status</th>
+                    <th>Edit Fees</th>
+                    <th>Edit Client</th>
+                </tr>
+                @Html.Partial("_DisplayClients")
+            </table>
+
+          
+        </div>
+    </div>
+
+
+
+    </section>
+
+        
+

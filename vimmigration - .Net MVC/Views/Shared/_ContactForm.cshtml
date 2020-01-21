@@ -1,0 +1,64 @@
+﻿@model VeraCityImmigration.Models.Contact
+@using (Html.BeginForm("Contact", "Home", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="name">
+                    Name
+                </label>
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @id = "name", @name = "name", @placeholder = "Your Name" })
+                <div class="validation">@Html.ValidationMessageFor(model=>model.Name)</div>
+            </div>
+            <div class="form-group">
+                <label for="email">
+                    Email Address
+                </label>
+                <div class="form-group">
+                    @*<input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />*@
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @id = "email", @name = "email", @placeholder = "Your Email", @datarule = "email" })
+                    <div class="validation">@Html.ValidationMessageFor(model=>model.Email)</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">
+                    Phone
+                </label>
+                <div class="form-group">
+                    @*<input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />*@
+                    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", @id = "phone", @name = "phone", @placeholder = "Phone Number" })
+                    <div class="validation">@Html.ValidationMessageFor(model => model.Phone)</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="subject">
+                    Subject
+                </label>
+                @Html.TextBoxFor(model => model.Subject, new { @class = "form-control", @id = "subject", @name = "subject", @placeholder = "Subject" })
+                @*<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />*@
+                <div class="validation">@Html.ValidationMessageFor(model => model.Subject)</div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="name">
+                    Message
+                </label>
+                @Html.TextAreaFor(model => model.Message, new { @class = "form-control", @placeholder = "Message", @id = "message", @name = "message", @rows="15" })
+                @*<textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>*@
+                <div class="validation">@Html.ValidationMessageFor(model => model.Message)</div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-skin pull-right" id="btnContactUs">
+                Send Message
+            </button>
+        </div>
+    </div>
+
+}

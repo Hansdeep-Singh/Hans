@@ -1,0 +1,63 @@
+﻿@model VeraCityImmigration.Models.AdminClientDetailViewModel
+@{
+    ViewBag.Title = "AdminClientDetail";
+    Layout = "~/Views/Shared/_LayoutSecureAdmin.cshtml";
+}
+
+<section id="intro" class="home-section r">
+    <div class="marginbot-40"></div>
+
+
+    <div class="container">
+        <h4>Hi @Html.DisplayFor(model => model.FirstName) your Application Status is </h4><h4 class="alert alert-danger bg-primary">Pending</h4>
+        <div class="row marginbot-40">
+            <div class="col-lg-2 col-md-4 col-sm-1">
+               
+               <img src="@Model.thumbstring" width="185" height="185" alt="@Model.FirstName" />
+
+               
+            </div>
+            <div class="col-lg-5 col-md-4 col-sm-5">
+                <ul class="list-group">
+                    <li class="list-group-item">Name =<div class="info_client"> @Html.DisplayFor(model => model.FirstName)  @Html.DisplayFor(model => model.Lastname) </div> </li>
+                    <li class="list-group-item">Date of birth =<div class="info_client">  @Html.DisplayFor(model => model.dob)</div></li>
+                    <li class="list-group-item">Address =<div class="info_client">  @Html.DisplayFor(model => model.address)</div></li>
+                    <li class="list-group-item">Mobile Phone Number =<div class="info_client">  @Html.DisplayFor(model => model.phone)</div></li>
+                    <li class="list-group-item">Passport Number=<div class="info_client"> @Html.DisplayFor(model => model.passportnumber)</div></li>
+                    <li class="list-group-item">Country of issue =<div class="info_client">  @Html.DisplayFor(model => model.passportcountry)</div></li>
+                    @*<li class="list-group-item"></li>*@
+                </ul>
+            </div>
+
+            <div class="col-lg-5 col-md-4 col-sm-5">
+                <ul class="list-group">
+                    <li class="list-group-item">Type of Visa = <div class="info_client">@Html.DisplayFor(model => model.visatype)</div></li>
+                    <li class="list-group-item">Visa due date = <div class="info_client">@Html.DisplayFor(model => model.visaduedate)</div></li>
+                    <li class="list-group-item">Passport Expiry Date = <div class="info_client">@Html.DisplayFor(model => model.passportexpirydate)</div></li>
+                    <li class="list-group-item">PCC Expire Date = <div class="info_client">@Html.DisplayFor(model => model.policeclearanceexpiry)</div></li>
+                    <li class="list-group-item">Medical Expiry Date = <div class="info_client">@Html.DisplayFor(model => model.medicalexpiry)</div></li>
+                </ul>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <h1>Documents</h1>
+            <div class="col-lg-11 col-md-10 col-sm-8">
+
+
+                @Html.Partial("_AdminDisplayDocuments")
+
+
+            </div>
+
+            
+        </div>
+
+    </div>
+
+</section>
+

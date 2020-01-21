@@ -1,0 +1,57 @@
+﻿@model VeraCityImmigration.Models.RegisterViewModel
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <hr />
+    @Html.ValidationSummary(true)
+
+    <div class="row marginbot-10">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd">Email Address:</label>
+            <div class="col-sm-7">
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Enter Email Address" })
+            </div>
+            <div class="col-sm-3">
+                <div class="validation">
+                    @Html.ValidationMessageFor(model => model.Email)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row marginbot-10">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd">Password:</label>
+            <div class="col-sm-7">
+                @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @placeholder = "Password", @type = "password" })
+            </div>
+            <div class="col-sm-3">
+                <div class="validation"> @Html.ValidationMessageFor(model => model.Password)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row marginbot-10">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd">Confirm Password:</label>
+            <div class="col-sm-7">
+                @Html.TextBoxFor(model => model.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password", @type = "password" })
+            </div>
+            <div class="col-sm-3">
+                <div class="validation"> @Html.ValidationMessageFor(model => model.ConfirmPassword)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row marginbot-10">
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-skin pull-left" id="btnContactUs">
+                    Register
+                </button>
+            </div>
+        </div>
+    </div>
+}

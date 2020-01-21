@@ -1,0 +1,22 @@
+﻿@foreach (var ins in ViewBag.Installments as List<VeraCityImmigration.Models.AdminClientFeeViewModel>)
+{
+    <div class=" col-lg-3 bg-info marginbot-10">
+       @ins.Installment
+    </div>
+
+    <div class=" col-lg-3 bg-info marginbot-10">
+        @ins.InstallmentDate
+    </div>
+
+    <div class=" col-lg-3 bg-info marginbot-10">
+        @ins.InstallmentType
+    </div>
+
+
+    <div class=" col-lg-3 marginbot-10">
+        @using (Html.BeginForm("DeleteInstallment", "Admin", new { id = ins.AdminClientFeeId }))
+        {
+            <input type="submit" class="del_btn" value="Delete" onclick="return confirm('Are you sure you want to delete @ins.Installment')" />
+        }
+        </div>
+}
